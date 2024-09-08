@@ -1,0 +1,106 @@
+body {
+   font-family: 'Kantumruy_Pro', sans-serif;
+}
+@font-face {
+   font-family: 'Kantumruy_Pro';
+   src: url(../font/KantumruyPro-Regular.ttf);
+}
+.sidebar {
+   height: 100vh;
+   width: 250px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   background-color: #343a40;
+   padding-top: 20px;
+}
+
+.sidebar a {
+   color: #ffffff;
+}
+
+.content {
+   margin-left: 250px;
+   padding: 20px;
+}
+
+.form-inline {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+
+.form-inline label {
+   margin-right: 10px;
+   color: green;
+}
+
+.form-inline input[type="text"],
+.form-inline input[type="email"] {
+   margin-right: 10px;
+   width: 200px;
+}
+
+.form-inline .btn-success {
+   margin-left: 10px;
+}
+
+.table th {
+   background-color: green;
+   color: white;
+   text-align: center;
+}
+
+.table td {
+   vertical-align: middle;
+   text-align: center; /* Ensure the content is centered */
+}
+
+.btn-edit {
+   background-color: navy;
+   color: white;
+}
+
+.btn-delete {
+   background-color: red;
+   color: white;
+}
+
+.btn-update, .btn-cancel {
+   margin-top: 20px;
+}
+
+.btn-update {
+   background-color: blue;
+   color: white;
+}
+
+.btn-cancel {
+   background-color: red;
+   color: white;
+}
+
+.ml-250 {
+   margin-left: 250px;
+}
+
+.btn-width {
+   width: 8%;
+   height: 40px;
+}
+.btn-action{
+   width: 60px;
+   height: 40px;
+}
+.email-col{
+   width: 40%; /* Adjust the percentage as needed */
+}
+.action-col{
+   width: 15%;
+}
+.id-col{
+   width: 10%;
+}
+.transition{
+   transition: all ease 1.2s;
+}

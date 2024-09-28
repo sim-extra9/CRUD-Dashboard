@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD-Control</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-dark">
+        
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-4">Admin, Dashboard</span>
+                </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white active"><img class="icon-frame" src="../assets/frontend_assets/dashboard.png">Dashboard</a>
+            </li>
+            <li>
+                <a href="../pages/user.html" class="nav-link text-white"><img class="icon-frame" src="../assets/frontend_assets/profile_icon.png">អ្នកប្រេីប្រាស់</a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white"><img class="icon-frame" src="../assets/frontend_assets/cart_icon.png">ទំនិញ</a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white"><img class="icon-frame" src="../assets/frontend_assets/order_icon.png">ការបញ្ជាទិញ</a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white"><img class="icon-frame" src="../assets/frontend_assets/exchange_icon.png">នាំចូល</a>
+            </li>
+        </ul>
+        <ul class="nav nav-pills flex-column mt-auto"></ul>
+            <li class="nav-item">
+                <a href="#settings" class="nav-link text-white"><img class="icon-frame" src="../assets/frontend_assets/settings.png">កំណត់</a>
+            </li>
+            <li class="nav-item">
+                <a href="#logout" class="nav-link text-white mb-2"><img class="icon-frame" src="../assets/frontend_assets/logout.png">ចាកចេញ</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+    <!--  -->
+    <div class="container">
+        <nav class="navbar navbar-dark navbar-expand-sm justify-content-between">
+            <h2 class="nav-item">សួរស្តី,Admin</h2>
+            <ul class="navbar navbar-dark navbar-expand-sm justify-content-around gap-3 ">
+                <div class="nav-item">
+                    <input type="text" id="searchInput" class="form-control d-none" placeholder="ស្វែងរក..." onkeyup="searchFunction()">
+                </div>
+                <div class="nav-item">
+                    <img class="pointer" src="../assets/frontend_assets/search_icon.png" width="25px" height="25px" onclick="showSearchBar()">
+                </div>
+                <div class="nav-item" id="searchButton"><img src="../assets/frontend_assets/notification-bell.png" class="pointer" width="30px" height="30px" alt="">
+                </div>
+                    <div class="nav-item">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-list-4" aria-controls="navbar-list-4" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbar-list-4">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end z-3" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a class="dropdown-item pb-3" href="#"><img class="icon-frame-25 pe-2" src="../assets/frontend_assets/profile_icon.png" alt="">ពត័មានផ្ទាល់ខ្លួន</a></li>
+                                        <li><a class="dropdown-item pb-3" href="#"><img class="icon-frame-25 pe-2" src="../assets/frontend_assets/notification-bell.png" alt="">ដំណឹង</a></li>
+                                        <li><a class="dropdown-item pb-3 " href="../../index.html"><img class="icon-frame-25 pe-2" src="../assets/frontend_assets/logout.png" alt="">ចាកចេញ</a></li>
+                                    </ul>
+                                </li>   
+                            </ul>
+                        </div>
+                    </div>
+            </ul>
+        </nav>
+        
+                                
+            <div class="d-flex justify-content-around gap-3">
+                <div class="w-25 bg-primary pb-5 h-50 rounded-3 d-flex align-items-center justify-content-between">
+                    <div class="mt-2 mx-3">
+                        <h4 class="text-white ">អ្នកប្រេីប្រាស់</h4>
+                        <p class="text-white-50">មានអ្នកប្រេីប្រាស់ចំនួន​ :<span id="userCountValue"></span>0​​​​</p>                    
+                    </div>
+                    <div class=" me-4">
+                        <a href="../pages/user.html"><img src="../assets/frontend_assets/profile_icon.png" alt="Profile Icon" class=" "></a>
+                    </div>
+                </div>
+                <div class="w-25 bg-secondary pb-5 h-50 rounded-3 d-flex align-items-center justify-content-between">
+                    <div class="mt-2 mx-3">
+                        <h4 class="text-white ">ទំនិញ</h4>
+                        <p class="text-white-50">មានទំនិញចំនួន​ :​​​​</p>
+                    </div>
+                    <div class=" me-4">
+                        <a href=""><img src="../assets/frontend_assets/cart_icon.png" alt="Profile Icon" class=" "></a>
+                    </div>
+                </div>
+                <div class="w-25 bg-info pb-5 h-50 rounded-3 d-flex align-items-center justify-content-between">
+                    <div class="mt-2 mx-3">
+                        <h4 class="text-white ">ការបញ្ជាទិញ</h4>
+                        <p class="text-white-50">មានការបញ្ជាទិញចំនួន​ :​​​​</p>
+                    </div>
+                    <div class=" me-4">
+                        <a href=""><img src="../assets/frontend_assets/order_icon.png" alt="Profile Icon" class=" "></a>
+                    </div>
+                </div>
+                <div class="w-25 bg-success pb-5 h-50 rounded-3 d-flex align-items-center justify-content-between">
+                    <div class="mt-2 mx-3">
+                        <h4 class="text-white ">នាំចូល</h4>
+                        <p class="text-white-50">មានការនាំចូលចំនួន​ :​​​​</p>
+                    </div>
+                    <div class=" me-4">
+                        <a href=""><img src="../assets/frontend_assets/exchange_icon.png" alt="" class=" "></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../assets/frontend_assets/assets.js"></script>
+</body>
+</html>

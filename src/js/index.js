@@ -3,7 +3,8 @@ const khmerNumbers = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '�
 
 // Function to convert numbers to Khmer numerals
 function convertToKhmerNumber(num) {
-    return num.toString().split('').map(digit => khmerNumbers[parseInt(digit)]).join('');
+    const khmerNum = num.toString().split('').map(digit => khmerNumbers[parseInt(digit)]).join('');
+    return `០០${khmerNum}`.slice(-3);  
 }
 
 // Email validation function using regular expression
@@ -24,7 +25,7 @@ function addRowToTable(name, email) {
     row.innerHTML = `
         <td class="id-col">${convertToKhmerNumber(id++)}</td>
         <td>${name}</td>
-        <td class="email-col">${email}</td>
+        <td class="email-col" type='email'>${email}</td>
         <td class="text-center action-col">
             <button class="btn btn-edit bg-success text-white btn-action">កែប្រែ</button>
             <button class="btn btn-delete bg-danger text-white btn-action">លុប</button>
@@ -107,6 +108,8 @@ document.getElementById('addButton').addEventListener('click', () => {
         setTimeout(() => {
             alertBox.classList.add('d-none');
         }, 3000);
+        setTimeout(3000);
+        
     }
 });
 
@@ -199,3 +202,61 @@ document.getElementById('confirmDelete').addEventListener('click', () => {
     // Update localStorage
     updateLocalStorage();
 });
+
+
+
+//Nav Link
+
+// Function to handle adding active class to the clicked link
+const navLinks = document.querySelectorAll('.nav-link');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        // Remove active class from all links
+        navLinks.forEach(l => l.classList.remove('active'));
+
+        // Add active class to the clicked link
+        this.classList.add('active');
+    });
+});
+
+
+// Function to update the user count display
+function updateUserCount() {
+    const data = JSON.parse(localStorage.getItem('tableData')) || [];
+    const userCount = data.length;
+
+    // Update the user count in the HTML
+    const userCountElement = document.getElementById('userCountValue');
+    if (userCountElement) {
+        userCountElement.textContent = `អ្នកប្រើប្រាស់: ${userCount}`;
+    }
+}
+function showSearchBar() {
+    var searchInput = document.getElementById("searchInput");
+    
+    // Toggle the 'd-none' class to show or hide the search bar
+    if (searchInput.classList.contains("d-none")) {
+        searchInput.classList.remove("d-none");
+    } else {
+        searchInput.classList.add("d-none");
+    }
+}
+function searchFunction() {
+    // Get the search query
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let tableRows = document.querySelectorAll('#table-body tr'); // Select all table rows
+
+    // Loop through the table rows and hide those that don't match the query
+    tableRows.forEach(function(row) {
+        let name = row.cells[1].textContent.toLowerCase(); // Get the name cell content
+        let email = row.cells[2].textContent.toLowerCase(); // Get the email cell content
+
+        // Show or hide the row based on the query matching the name or email
+        if (name.includes(input) || email.includes(input)) {
+            row.style.display = ''; // Show the row
+        } else {
+            row.style.display = 'none'; // Hide the row
+        }
+    });
+}
